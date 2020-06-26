@@ -4,9 +4,12 @@ import javax.naming.Context;
 
 import org.springframework.context.ApplicationContext;
 
+import com.bustos.oscar.mathpower.game.service.client.PythagorasClient;
+
 public class GameManager {
 
 	private static ApplicationContext applicationContext;
+	private static PythagorasClient pc;
 //	private static GameProperties gameProperties;
 
 	private static GameStatus currentStatus;
@@ -22,7 +25,9 @@ public class GameManager {
 
 	public static void generateInstance(ApplicationContext context) {
 		applicationContext = context;
+		pc = applicationContext.getBean(PythagorasClient.class);
 //		applicationContext.getBean(GameProperties.class);
+		System.out.println(PythagorasClient.generateRandomPythagoras().getHypotenuse());
 	}
 
 	private GameManager() {
